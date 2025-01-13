@@ -1,0 +1,138 @@
+plugins {
+//    id 'com.android.application'
+//    id 'org.jetbrains.kotlin.android'
+//    id("org.jetbrains.kotlin.plugin.compose")
+//    //id 'kotlin-kapt'
+//    id("com.google.devtools.ksp")
+//    id("com.google.dagger.hilt.android")
+//    id("kotlin-parcelize")
+//    id 'org.jetbrains.kotlin.plugin.serialization'
+
+    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.serialization)
+}
+
+android {
+    namespace 'com.alkamali.newsapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.alkamali.newsapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        // Set this argument to capture profiling information, instead of measuring performance.
+        // Can be one of:
+        //   * None
+        //   * Sampled
+        //   * Method
+        // See full descriptions of available options at: d.android.com/benchmark#profiling
+        //testInstrumentationRunnerArgument 'androidx.benchmark.profiling.mode', 'none'
+    }
+
+    buildTypes {
+        release {
+            isDefault = true
+            //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'benchmark-proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        //sourceCompatibility JavaVersion.VERSION_1_7
+        //targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        //jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        compose true
+    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion '1.4.3'
+//    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    //This error is caused by a transitive dependency conflict between the room compiler(v2.6.0)
+    // and compose accompanist pager(v0.30.0) library.
+    //Room compiler uses com.intellij:annotations:12.0 while accompanist pager
+    // uses org.jetbrains:annotations:23.0.0 as a transitive dependency.
+    //The solution is to exclude one of the depdencies:
+//    configurations.implementation {
+//        exclude(group = "com.intellij", module = "annotations")
+//    }
+}
+
+dependencies {
+
+    // Core Android libraries
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
+    // Jetpack Compose dependencies
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling)
+    implementation(libs.compose.ui.tooling.preview)
+    //implementation libs.androidx.ui.text.google.fonts
+    implementation libs.compose.material3
+    implementation(libs.navigation.compose)
+    implementation(libs.lifecycle.runtime)
+    // lib ktor request and response network client
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.gson)
+    // load image dependencies.
+    implementation(libs.glide.compose)
+    // lib room db
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)// استخدم ksp بدلًا من annotationProcessor
+    implementation(libs.room.paging)
+    // dagger Hilt for dependency injection
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.hilt.navigation.compose)
+    //System UI Controller Accompanist
+    implementation(libs.accompanist.systemuicontroller)
+    //Palette API
+    implementation(libs.palette.ktx)
+    //paging lab
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+    testImplementation(libs.androidx.paging.common)
+
+    //testImplementation(kotlin("test"))
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.espresso)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+
+
+
+}

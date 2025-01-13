@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="tap_to_order_by_name">Tap to Order By Name</string>
+    <string name="image_logo">Image logo</string>
+</resources>

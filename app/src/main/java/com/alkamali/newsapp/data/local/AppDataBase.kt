@@ -3,24 +3,24 @@ package com.alkamali.newsapp.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.alkamali.newsapp.data.local.dao.HeroDao
-import com.alkamali.newsapp.data.local.dao.HeroRemoteKeyDao
-import com.alkamali.newsapp.domain.model.Hero
-import com.alkamali.newsapp.domain.model.HeroRemoteKey
+import com.alkamali.newsapp.data.local.dao.ItemDao
+import com.alkamali.newsapp.data.local.dao.ItemRemoteKeysDao
+import com.alkamali.newsapp.domain.model.ItemEntity
+import com.alkamali.newsapp.domain.model.ItemRemoteKeys
 
 @Database(
     entities =
     [
-        Hero::class,
-        HeroRemoteKey::class
+        ItemEntity::class,
+        ItemRemoteKeys::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(DBConverter::class)
 abstract class AppDataBase : RoomDatabase() {
-    abstract fun heroDao(): HeroDao
-    abstract fun heroRemoteKeyDao(): HeroRemoteKeyDao
+    abstract fun itemDao(): ItemDao
+    abstract fun itemRemoteKeysDao(): ItemRemoteKeysDao
 
 //    companion object {
 //        private var INSTANCE: AppDatabase? = null

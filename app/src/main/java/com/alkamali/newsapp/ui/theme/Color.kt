@@ -1,5 +1,9 @@
 package com.alkamali.newsapp.ui.theme
 
+import android.provider.CalendarContract
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 
@@ -218,6 +222,39 @@ val surfaceContainerLowDarkHighContrast = Color(0xFF1E1A1F)
 val surfaceContainerDarkHighContrast = Color(0xFF221E23)
 val surfaceContainerHighDarkHighContrast = Color(0xFF2D292D)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF383338)
+
+
+// color system
+// 1. Brand:    primary, secondary, tertiary
+// 2. Neutral:  White, Gray, black
+// 3. semantic: Success, Warning, Info, Error
+
+val ColorScheme.surfaceContainer
+    @Composable
+    get() = if (isSystemInDarkTheme()) surfaceContainerDark
+    else surfaceContainerLight
+
+val ColorScheme.surfaceContainerLowest
+    @Composable
+    get() = if (isSystemInDarkTheme()) surfaceContainerLowestDark
+       else surfaceContainerLowestLight
+
+val ColorScheme.surfaceContainerLow
+    @Composable
+    get() = if (isSystemInDarkTheme()) surfaceContainerLowDark
+     else surfaceContainerLowLight
+
+val ColorScheme.surfaceContainerHighL
+    @Composable
+    get() = if (isSystemInDarkTheme()) surfaceContainerHighDark
+    else surfaceContainerHighLight
+
+
+val ColorScheme.surfaceContainerHighestL
+    @Composable
+    get() = if (isSystemInDarkTheme())  surfaceContainerHighestDark
+    else surfaceContainerHighestLight
+
 
 
 

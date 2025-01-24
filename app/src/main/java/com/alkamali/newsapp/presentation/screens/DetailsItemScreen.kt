@@ -2,8 +2,7 @@ package com.alkamali.newsapp.presentation.screens
 
 import androidx.compose.runtime.Composable
 
-
 @Composable
-fun HomeScreen(){
+ fun DetailsItemScreen(itemId: Int? ){
 
-}
+ }

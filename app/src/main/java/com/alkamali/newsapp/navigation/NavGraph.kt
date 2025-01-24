@@ -7,10 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.alkamali.newsapp.presentation.screens.DetailsHeroScreen
-import com.alkamali.newsapp.presentation.screens.HomeScreen
-import com.alkamali.newsapp.presentation.screens.OnBoardingScreen
-import com.alkamali.newsapp.presentation.screens.SplashScreen
+import com.alkamali.newsapp.presentation.screens.DetailsItemScreen
+import com.alkamali.newsapp.presentation.screens.home.HomeScreen
+import com.alkamali.newsapp.presentation.screens.onboarding.OnBoardingScreen
+import com.alkamali.newsapp.presentation.screens.splash.SplashScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
@@ -23,17 +23,16 @@ fun SetupNavGraph(navController: NavHostController) {
             SplashScreen(navController)
         }
         composable(route = Destinations.Welcome.route) {
-            OnBoardingScreen()
+            OnBoardingScreen(navController)
         }
         composable(route = Destinations.Home.route) {
-            HomeScreen()
+            HomeScreen(navHostController = navController)
         }
         composable(
             route = Destinations.Details.route,
-            arguments = listOf(navArgument(Destinations.Details.argHero)
-            { type = NavType.IntType })
+            arguments = listOf(navArgument(Destinations.Details.argItem) { type = NavType.IntType })
         ) {
-            DetailsHeroScreen(it.arguments?.getInt(Destinations.Details.argHero))
+            DetailsItemScreen(it.arguments?.getInt(Destinations.Details.argItem))
         }
         composable(route = Destinations.Search.route) {
 

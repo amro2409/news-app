@@ -19,6 +19,8 @@ private val DarkColorPalette = darkColorScheme(
     onTertiary = onTertiaryDark,
     surface = surfaceDark,
     onSurface = onSurfaceDark,
+    inverseSurface = inverseSurfaceDark,
+    inverseOnSurface = inverseOnSurfaceDark,
     surfaceVariant = surfaceVariantDark,
     onSurfaceVariant = onSurfaceVariantDark,
     outline = outlineDark,
@@ -40,8 +42,11 @@ private val LightColorPalette = lightColorScheme(
     onSurface = onSurfaceLight,
     surfaceVariant = surfaceVariantLight,
     onSurfaceVariant = onSurfaceVariantLight,
+    inverseSurface = inverseSurfaceLight,
+    inverseOnSurface = inverseOnSurfaceLight,
     outline = outlineLight,
-    outlineVariant = outlineVariantLight
+    outlineVariant = outlineVariantLight,
+
 
 
     /* Other default colors to override

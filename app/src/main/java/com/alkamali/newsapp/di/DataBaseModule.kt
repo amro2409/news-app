@@ -2,6 +2,7 @@ package com.alkamali.newsapp.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.alkamali.newsapp.data.local.AppDataBase
 import com.alkamali.newsapp.util.Constants.NAME_DATABASE
 import dagger.Module
@@ -19,6 +20,12 @@ object DataBaseModule {
     @Singleton
     fun provideDataBase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(context, AppDataBase::class.java, NAME_DATABASE).build()
+    ): AppDataBase {
+        return Room.databaseBuilder(
+            context,
+            AppDataBase::class.java,
+            NAME_DATABASE
+        ).build()
+    }
 
 }

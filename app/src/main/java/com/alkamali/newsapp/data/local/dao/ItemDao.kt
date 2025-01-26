@@ -9,8 +9,8 @@ interface ItemDao {
 
     @Query("SELECT *FROM Items ORDER BY id ASC")
     fun getAllItems(): PagingSource<Int, ItemEntity>
-    @Query("SELECT *FROM Items WHERE  id=:heroId ")
-    fun getSelectedItem(heroId: Int): ItemEntity
+    @Query("SELECT *FROM Items WHERE  id=:itemId ")
+    fun getSelectedItem(itemId: Int): ItemEntity
 
     @Insert
     suspend fun insert(itemEntity: ItemEntity)

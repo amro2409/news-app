@@ -1,12 +1,5 @@
 plugins {
-//    id 'com.android.application'
-//    id 'org.jetbrains.kotlin.android'
-//    id("org.jetbrains.kotlin.plugin.compose")
-//    //id 'kotlin-kapt'
-//    id("com.google.devtools.ksp")
-//    id("com.google.dagger.hilt.android")
-//    id("kotlin-parcelize")
-//    id 'org.jetbrains.kotlin.plugin.serialization'
+
 
     id 'org.jetbrains.kotlin.android'
     alias(libs.plugins.android.application)
@@ -48,6 +41,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -98,6 +95,7 @@ dependencies {
     implementation libs.compose.material3
     implementation(libs.navigation.compose)
     implementation(libs.lifecycle.runtime)
+    //implementation("androidx.wear.compose:compose-material3:1.0.0-alpha27")
     // lib ktor request and response network client
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.android)
@@ -106,9 +104,12 @@ dependencies {
     implementation(libs.gson)
     // load image dependencies.
     implementation(libs.glide.compose)
+    implementation("io.coil-kt:coil-compose:2.4.0")
     // lib room db
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation libs.androidx.datastore.core.android
+    implementation libs.androidx.datastore.prefenences
     ksp(libs.room.compiler)// استخدم ksp بدلًا من annotationProcessor
     implementation(libs.room.paging)
     // dagger Hilt for dependency injection
@@ -123,6 +124,10 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
     testImplementation(libs.androidx.paging.common)
+    //LAB Retrofit
+    implementation libs.retrofit2
+    implementation libs.retrofit2.converter
+    implementation libs.parceler
 
     //testImplementation(kotlin("test"))
     testImplementation(libs.junit)

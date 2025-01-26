@@ -67,7 +67,10 @@ fun ShimmerItem(
            Column( modifier = Modifier
                .background(
                    color = MaterialTheme.colorScheme.surfaceContainerLowest,
-                   shape = ShapeDefaults.Large.copy(topStart = CornerSize(CORNER_XXS.dp))
+                   shape = ShapeDefaults.Large.copy(
+                       topStart = CornerSize(CORNER_XXS.dp),
+                       topEnd = CornerSize(CORNER_XXS.dp),
+                       )
                ).padding(PADDING_XM.dp)
            ) {
                Surface(

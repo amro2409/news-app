@@ -84,3 +84,14 @@ androidx-test-espresso = { module = "androidx.test.espresso:espresso-core", vers
 
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-datastore-core-android = { group = "androidx.datastore", name = "datastore-core-android", version = "1.1.1" }
+androidx-datastore-prefenences = {group= "androidx.datastore",name = "datastore-preferences",version = "1.1.1"}
+
+# retrofit lib
+retrofit2 = { module = "com.squareup.retrofit2:retrofit", version = "2.3.0" }
+retrofit2-converter = { module = "com.squareup.retrofit2:converter-gson", version = "2.3.0" }
+parceler = { module = "org.parceler:parceler-api", version = "1.1.9" }
+parceler-compiler = { module = "org.parceler:parceler", version = "1.1.9" }
+
+
+
